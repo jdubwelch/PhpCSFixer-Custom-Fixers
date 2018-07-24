@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PedroTroller\CS\Fixer;
 
 use PhpCsFixer\Tokenizer\Tokens;
@@ -26,7 +28,7 @@ final class TokensAnalyzer
 
     public function __call($name, $arguments)
     {
-        return call_user_func_array([$this->analyzer, $name], $arguments);
+        return \call_user_func_array([$this->analyzer, $name], $arguments);
     }
 
     /*

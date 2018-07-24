@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PedroTroller\CS\Fixer\ClassNotation;
 
 use PedroTroller\CS\Fixer\AbstractOrderedClassElementsFixer;
@@ -133,7 +135,7 @@ PHP;
                     continue;
                 }
 
-                if (in_array($element['methodName'], $methods)) {
+                if (\in_array($element['methodName'], $methods)) {
                     $portions[array_search($element['methodName'], $methods)] = $element;
                     unset($elements[$index]);
                 }

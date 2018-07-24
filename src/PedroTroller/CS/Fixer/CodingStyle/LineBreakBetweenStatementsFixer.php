@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PedroTroller\CS\Fixer\CodingStyle;
 
 use PedroTroller\CS\Fixer\AbstractFixer;
@@ -52,7 +54,7 @@ PHP;
         return 'Transform multiline docblocks with only one comment into a singleline docblock.';
     }
 
-    protected function applyFix(SplFileInfo $file, Tokens $tokens)
+    protected function applyFix(SplFileInfo $file, Tokens $tokens): void
     {
         for ($index = 0; $index < $tokens->count() - 2; ++$index) {
             $token = $tokens[$index];
@@ -104,11 +106,11 @@ PHP;
     {
         $parts = explode("\n", $whitespace);
 
-        while (3 < count($parts)) {
+        while (3 < \count($parts)) {
             array_shift($parts);
         }
 
-        while (3 > count($parts)) {
+        while (3 > \count($parts)) {
             array_unshift($parts, '');
         }
 

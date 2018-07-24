@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace tests\TokensAnalyzerIntegration;
 
 use PedroTroller\CS\Fixer\TokensAnalyzer;
@@ -9,6 +11,7 @@ use Webmozart\Assert\Assert;
 
 class MethodArguments extends TokensAnalyzerIntegration
 {
+
     /**
      * {@inheritdoc}
      */
@@ -43,7 +46,7 @@ PHP;
     /**
      * {@inheritdoc}
      */
-    public function assertions(TokensAnalyzer $analyzer, Tokens $tokens)
+    public function assertions(TokensAnalyzer $analyzer, Tokens $tokens): void
     {
         $methods = array_filter(
             $analyzer->getClassyElements(),
@@ -52,7 +55,7 @@ PHP;
 
         Assert::count($methods, 3);
 
-        list($contructor, $theFunction, $setUser) = array_keys($methods);
+        [$contructor, $theFunction, $setUser] = array_keys($methods);
 
         $arguments = $analyzer->getMethodArguments($contructor);
         Assert::eq($analyzer->getNumberOfArguments($contructor), 0);

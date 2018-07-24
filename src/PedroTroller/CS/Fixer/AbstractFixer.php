@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PedroTroller\CS\Fixer;
 
 use PhpCsFixer\AbstractFixer as PhpCsFixer;
@@ -74,6 +76,7 @@ abstract class AbstractFixer extends PhpCsFixer
      */
     public function getDeprecationReplacement()
     {
+        return null;
     }
 
     /**
@@ -101,7 +104,7 @@ abstract class AbstractFixer extends PhpCsFixer
      */
     protected function getUseStatements(Tokens $tokens, $fqcn)
     {
-        if (false === is_array($fqcn)) {
+        if (false === \is_array($fqcn)) {
             $fqcn = explode('\\', $fqcn);
         }
         $sequence = [[T_USE]];
@@ -111,7 +114,7 @@ abstract class AbstractFixer extends PhpCsFixer
                 [[T_STRING, $component], [T_NS_SEPARATOR]]
             );
         }
-        $sequence[count($sequence) - 1] = ';';
+        $sequence[\count($sequence) - 1] = ';';
 
         return $tokens->findSequence($sequence);
     }
@@ -123,7 +126,7 @@ abstract class AbstractFixer extends PhpCsFixer
      */
     protected function extendsClass(Tokens $tokens, $fqcn)
     {
-        if (false === is_array($fqcn)) {
+        if (false === \is_array($fqcn)) {
             $fqcn = explode('\\', $fqcn);
         }
 

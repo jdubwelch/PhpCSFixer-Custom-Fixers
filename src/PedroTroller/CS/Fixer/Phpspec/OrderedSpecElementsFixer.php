@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PedroTroller\CS\Fixer\Phpspec;
 
 use PedroTroller\CS\Fixer\AbstractOrderedClassElementsFixer;
@@ -80,7 +82,7 @@ SPEC;
     protected function sortElements(array $elements)
     {
         $portions         = [];
-        $numberOfElements = count($elements);
+        $numberOfElements = \count($elements);
 
         foreach ($elements as $index => $element) {
             if ('method' !== $element['type']) {
